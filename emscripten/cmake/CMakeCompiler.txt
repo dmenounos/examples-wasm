@@ -1,0 +1,7 @@
+# Have to precede project declaration !
+
+if(NOT COMPILER_CONFIG)
+	set(CMAKE_CXX_COMPILER "em++")
+	set(CMAKE_C_COMPILER "emcc")
+	set(COMPILER_CONFIG "1")
+endif()

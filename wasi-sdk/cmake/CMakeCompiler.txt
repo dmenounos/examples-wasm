@@ -1,0 +1,7 @@
+# Have to precede project declaration !
+
+if(NOT CMAKE_SYSROOT)
+	set(CMAKE_SYSROOT "$ENV{WASI_SDK_HOME}/share/wasi-sysroot")
+	set(CMAKE_CXX_COMPILER clang++)
+	set(CMAKE_C_COMPILER clang)
+endif()

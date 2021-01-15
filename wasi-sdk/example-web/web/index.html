@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>WASM</title>
+	</head>
+	<body>
+		<div>
+			<div>
+				<label for="aField">Number 1</label>
+				<input id="aField" name="aField" type="number" />
+			</div>
+			<div>
+				<label for="bField">Number 2</label>
+				<input id="bField" name="bField" type="number" />
+			</div>
+			<div>
+				<input id="addButton" type="button" value="Add Numbers" />
+				<div id="result"></div>
+			</div>
+		</div>
+		<script>
+			(async () => {
+				const { instance } = await WebAssembly.instantiateStreaming(
+					fetch('example-web.wasm'), 
+					{}
+				);
+
+				const addNumbers = () => {
+					const a = document.getElementById('aField').value;
+					const b = document.getElementById('bField').value;
+
+					const sum = instance.exports.add(a, b);
+					console.log('result: ' + sum);
+
+					document.getElementById('result').innerHTML = sum;
+				};
+
+				document.getElementById('addButton').addEventListener('click', addNumbers);
+			})();
+		</script>
+	</body>
+</html>
