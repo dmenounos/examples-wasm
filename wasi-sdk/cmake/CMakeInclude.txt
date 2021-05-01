@@ -1,0 +1,21 @@
+# This file is included by the individual CMakeLists.txt files of each module.
+# It is used to satisfy the inheritance property of our build system.
+# Here we can define common definitions and dependencies.
+
+message("")
+message(">> ${CMAKE_PROJECT_NAME} / ${PROJECT_NAME}")
+
+set(PROJECT_VERSION 1.0)
+
+if(NOT CMAKE_BUILD_TYPE)
+	set(CMAKE_BUILD_TYPE "Release")
+	message(">> CMAKE_BUILD_TYPE not specified, defaulting to ${CMAKE_BUILD_TYPE}.")
+endif()
+
+message(">> CMAKE_C_FLAGS           : ${CMAKE_CXX_FLAGS}")
+message(">> CMAKE_C_FLAGS_DEBUG     : ${CMAKE_CXX_FLAGS_DEBUG}")
+message(">> CMAKE_C_FLAGS_RELEASE   : ${CMAKE_CXX_FLAGS_RELEASE}")
+
+message(">> CMAKE_CXX_FLAGS         : ${CMAKE_CXX_FLAGS}")
+message(">> CMAKE_CXX_FLAGS_DEBUG   : ${CMAKE_CXX_FLAGS_DEBUG}")
+message(">> CMAKE_CXX_FLAGS_RELEASE : ${CMAKE_CXX_FLAGS_RELEASE}")
